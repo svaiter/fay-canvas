@@ -1,0 +1,19 @@
+name:                fay-canvas
+version:             0.0.1.0
+synopsis:            Canvas binding for Fay.
+description:         Canvas binding for Fay.
+homepage:            https://github.com/svaiter/fay-canvas
+bug-reports:         https://github.com/svaiter/fay-canvas/issues
+license:             BSD3
+license-file:        LICENSE
+author:              Samuel Vaiter
+maintainer:          Samuel Vaiter <samuel.vaiter@gmail.com>
+copyright:           Samuel Vaiter
+build-type:          Simple
+cabal-version:       >=1.8
+data-files: src/HtmlCanvas.hs
+
+library
+  hs-source-dirs: src
+  exposed-modules: HtmlCanvas
+  build-depends: fay-base >= 0.14.1.0
