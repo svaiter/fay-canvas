@@ -11,7 +11,26 @@ addEventListener :: String -> Fay () -> Bool -> Fay ()
 addEventListener = ffi "window['addEventListener'](%1,%2,%3)"
 
 --------------------------------------------------------------------------------
--- HTMLCanvasElement
+-- | Mini DOM
+-- TODO: Check if Cinder installed
+--------------------------------------------------------------------------------
+-- data Element
+-- instance Eventable Element
+
+-- Image
+data Image
+instance Eventable Image
+
+newImage :: Fay Image
+newImage = ffi "new Image()"
+
+src :: Image -> Fay String
+src = ffi "%1['src]"
+
+setSrc :: String -> Image -> Fay ()
+setSrc = ffi "%2['src'] = %1"
+
+-- Canvas
 data Canvas
 instance Eventable Canvas
 
@@ -179,7 +198,14 @@ closePath = ffi "%1['closePath']()"
 
 -- TODO: drawCustomFocusRing()
 
--- TODO: drawImage()
+drawImage :: Image -> Double -> Double -> Context -> Fay ()
+drawImage = ffi "%4['drawImage'](%1,%2,%3)"
+
+drawImageSize :: Image -> Double -> Double -> Double -> Double -> Context -> Fay ()
+drawImageSize = ffi "%7['drawImage'](%1,%2,%3,%4,%5,%6)"
+
+drawImageSpecific :: Image -> Double -> Double -> Double -> Double -> Double -> Double -> Double -> Double -> Context -> Fay ()
+drawImageSpecific = ffi "%10['drawImage'](%1,%2,%3,%4,%5,%6,%7,%8,%9)"
 
 -- TODO: drawSystemFocusRing()
 
